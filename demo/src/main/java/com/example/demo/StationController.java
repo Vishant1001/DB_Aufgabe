@@ -26,13 +26,13 @@ public class StationController {
         long startTime = System.currentTimeMillis();
 
         // Error: Alphanumeric Characters Not Allowed
-        if (!query.matches("[a-zA-Z]+")) {
+        if (!query.matches("[a-zA-Z]+")&&!query.matches("FRA")) {
             ErrorMessage errorResponse = new ErrorMessage("001", "Alphanumeric characters are not allowed");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
         }
 
         // Error: Numeric Characters Not Allowed
-        if (query.matches(".*\\d+.*")) {
+        if (query.matches("[0-9]+")) {
             ErrorMessage errorResponse = new ErrorMessage("002", "Numeric characters are not allowed");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
         }
